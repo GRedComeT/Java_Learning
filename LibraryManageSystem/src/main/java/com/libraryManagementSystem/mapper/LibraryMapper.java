@@ -67,5 +67,10 @@ public interface LibraryMapper {
     @Select("select * from books inner join borrowed on books.bid = borrowed.bid where sid = #{sid}")
     List<Book> getBookBySid(int sid);
 
+    @Select("select * from borrowed")
+    List<Borrowed> getAllBorrowed();
+
+    @Insert("insert into borrowed(sid, bid, borrowid, borrow_info) values(#{sid}, #{bid}, #{borrowid}, #{borrow_info})")
+    int insertBorrowed(Borrowed borrowed);
 
 }
