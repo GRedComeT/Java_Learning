@@ -1,5 +1,6 @@
-package com.library.servlet;
+package com.library.servlet.pages;
 
+import com.library.entity.User;
 import com.library.utils.ThymeleafUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,11 +11,15 @@ import org.thymeleaf.context.Context;
 
 import java.io.IOException;
 
-@WebServlet("/index")
-public class IndexServlet extends HttpServlet {
-
+@WebServlet("/books")
+public class BookServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ThymeleafUtil.process("index.html", new Context(), resp.getWriter());
+        Context context = new Context();
+        User user = (User) req.getSession().getAttribute("user");
+        context.setVariable("nickname", user.getNickname());
+        ThymeleafUtil.process("books.html", context, resp.getWriter());
     }
+
+
 }
