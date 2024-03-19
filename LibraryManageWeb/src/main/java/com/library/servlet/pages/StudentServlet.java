@@ -1,6 +1,8 @@
 package com.library.servlet.pages;
 
 import com.library.entity.User;
+import com.library.service.StudentService;
+import com.library.service.impl.StudentServiceImpl;
 import com.library.utils.ThymeleafUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,11 +15,20 @@ import java.io.IOException;
 
 @WebServlet("/students")
 public class StudentServlet extends HttpServlet {
+
+    StudentService service;
+
+    @Override
+    public void init() throws ServletException {
+        service = new StudentServiceImpl();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Context context = new Context();
         User user = (User) req.getSession().getAttribute("user");
         context.setVariable("nickname", user.getNickname());
+        context.setVariable("studentList", service.getStudentList());
         ThymeleafUtil.process("students.html", context, resp.getWriter());
     }
 }

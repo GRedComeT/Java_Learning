@@ -39,7 +39,7 @@
                 <ul class="main-menu">
                     
                     <li>
-                        <a href="index" class="active">
+                        <a href="index">
                             <span class="icon-menu feather-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                             </span>
@@ -49,7 +49,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="books">
+                        <a href="books" class="active">
                             <span class="icon-menu feather-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
                             </span>
@@ -80,14 +80,14 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-title-wrapper">
                             <div class="page-title-box">
-                                <h4 class="page-title">Add borrow</h4>
+                                <h4 class="page-title">Add book</h4>
                             </div>
                             <div class="breadcrumb-list">
                                 <ul>
                                     <li class="breadcrumb-link">
                                         <a href="javascript:void(0);"><i class="fas fa-home mr-2"></i>Library Management System</a>
                                     </li>
-                                    <li class="breadcrumb-link active">Add borrow</li>
+                                    <li class="breadcrumb-link active">Add book</li>
                                 </ul>
                             </div>
                         </div>
@@ -100,38 +100,20 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Add borrow</h4>
-                                    <p class="card-desc">Choose <code> book </code> and response <code> student</code>.</p>
+                                    <h4>Add book</h4>
+                                    <p class="card-desc">Input book information</p>
                                 </div>
                                 <div class="card-body">
-                                    <form class="separate-form" method="post" action="add-borrow">
+                                    <form class="separate-form" method="post" action="add-book">
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                             <h5 class="from-title mb-1">Information choosing</h5>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                     <div class="form-group">
-                                                        <label for="region" class="col-form-label">Books</label>
-                                                        <select class="select2 form-control" id="region" name="book">
-                                                            <option th:each="book : ${bookList}"
-                                                                    th:value="${book.getBid()}" th:text="${book.getBook_info()}"></option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                                                    <div class="form-group">
-                                                        <label for="city" class="col-form-label">Students</label>
-                                                        <select class="select2 form-control" id="city" name="student">
-                                                            <option th:each="student : ${studentList}"
-                                                                    th:value="${student.getSid()}" th:text="${student.getStu_info()}"></option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                                                    <div class="form-group">
-                                                        <label for="borrow_info" class="col-form-label">Borrow Information</label>
-                                                        <input class="form-control" type="text" placeholder="borrow information" id="borrow_info"
-                                                        name="borrow_info">
+                                                        <label for="book_info" class="col-form-label">Book Information</label>
+                                                        <input class="form-control" type="text" placeholder="book information" id="book_info"
+                                                        name="book_info">
                                                     </div>
                                                 </div>
 
