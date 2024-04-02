@@ -41,5 +41,15 @@ public class UserServiceImpl implements UserService {
         return mapper.getStudentNumber();
     }
 
+    @Override
+    public void addStudent(String stu_info) {
+        mapper.addStudent(stu_info);
+    }
+
+    @Override
+    public void deleteStudent(int id) {
+        mapper.deleteStudent(id);
+    }
+
 
 }

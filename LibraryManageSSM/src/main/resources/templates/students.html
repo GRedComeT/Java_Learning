@@ -111,10 +111,10 @@
                                         </thead>
                                         <tbody>
                                         <tr th:each="student : ${studentList}">
-                                            <td th:text="${student.getSid()}"></td>
+                                            <td th:text="${student.getId()}"></td>
                                             <td th:text="${student.getStu_info()}"></td>
                                             <td class="relative">
-                                                <a class="action-btn " th:href="'delete-student?id='+${student.getSid()}">
+                                                <a class="action-btn " th:href="'delete-student?id='+${student.getId()}">
                                                     <svg class="default-size " viewBox="0 0 341.333 341.333 ">
                                                         <g>
                                                             <g>

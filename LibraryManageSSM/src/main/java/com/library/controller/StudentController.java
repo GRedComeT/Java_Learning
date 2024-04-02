@@ -1,6 +1,7 @@
 package com.library.controller;
 
 import com.library.service.BookService;
+import com.library.service.UserService;
 import jakarta.annotation.Resource;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -11,36 +12,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class BookController {
-
+public class StudentController {
     @Resource
-    BookService bookService;
+    UserService userService;
 
-    @GetMapping("/books")
+    @GetMapping("/students")
     public String book(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("nickname", user.getUsername());
-        model.addAttribute("bookMap", bookService.getBookMap());
-        return "books";
+        model.addAttribute("studentList", userService.getStudentList());
+        return "students";
     }
 
-    @GetMapping("/add-book")
+    @GetMapping("/add-student")
     public String addBook(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("nickname", user.getUsername());
-        return "add-book";
+        return "add-student";
     }
 
-    @PostMapping("/add-book")
-    public String addBook(@RequestParam("book_info") String book_info) {
-        bookService.addBook(book_info);
-        return "redirect:/books";
+    @PostMapping("/add-student")
+    public String addBook(@RequestParam("student_info") String student_info) {
+        userService.addStudent(student_info);
+        return "redirect:/students";
     }
 
-    @GetMapping("/delete-book")
+    @GetMapping("/delete-student")
     public String deleteBook(@RequestParam("id") int id) {
-        bookService.deleteBook(id);
-        return "redirect:/books";
+        userService.deleteStudent(id);
+        return "redirect:/students";
     }
-
 }
