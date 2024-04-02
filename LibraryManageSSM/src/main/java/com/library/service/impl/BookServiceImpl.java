@@ -7,21 +7,31 @@ import com.library.service.BookService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class BookServiceImpl implements BookService {
 
     @Resource
     BookMapper mapper;
+
     @Override
     public List<Borrow> getBorrowList() {
         return mapper.getBorrowList();
     }
 
     @Override
-    public List<Book> getBookList() {
-        return mapper.getBookList();
+    public Map<Book, Boolean> getBookMap() {
+        Map<Book, Boolean> map = new LinkedHashMap<>();
+        List<Book> bookList = mapper.getBookList();
+        Set<Integer> borrowList = new HashSet<>();
+        mapper.getBorrowList().forEach(borrow -> {
+            borrowList.add(borrow.getBid());
+        });
+        bookList.forEach(book -> {
+            map.put(book, borrowList.contains(book.getId()));
+        });
+        return map;
     }
 
     @Override
@@ -42,5 +52,15 @@ public class BookServiceImpl implements BookService {
     @Override
     public void returnBorrow(int id) {
         mapper.deleteBorrow(id);
+    }
+
+    @Override
+    public void addBook(String book_info) {
+        mapper.addBook(book_info);
+    }
+
+    @Override
+    public void deleteBook(int id) {
+        mapper.deleteBook(id);
     }
 }

@@ -112,14 +112,14 @@
                                             </thead>
                                             <tbody>
                                             <tr th:each="book : ${bookMap}">
-                                                <td th:text="${book.key.getBid()}"></td>
+                                                <td th:text="${book.key.getId()}"></td>
                                                 <td th:text="${book.key.getBook_info()}"></td>
                                                 <td>
-                                                    <label th:unless="${book.value}" class="mb-0 badge badge-primary" title="" data-original-title="Pending">Borrowed</label>
-                                                    <label th:if="${book.value}" class="mb-0 badge badge-success" title="" data-original-title="Pending">Ready</label>
+                                                    <label th:if="${book.value}" class="mb-0 badge badge-primary" title="" data-original-title="Pending">Borrowed</label>
+                                                    <label th:unless="${book.value}" class="mb-0 badge badge-success" title="" data-original-title="Pending">Ready</label>
                                                 </td>
                                                 <td class="relative">
-                                                    <a class="action-btn " th:href="'delete-book?id='+${book.key.getBid()}">
+                                                    <a class="action-btn " th:href="'delete-book?id='+${book.key.getId()}">
                                                         <svg class="default-size " viewBox="0 0 341.333 341.333 ">
                                                             <g>
                                                                 <g>

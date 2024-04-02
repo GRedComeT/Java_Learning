@@ -25,9 +25,9 @@ public class BorrowController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("nickname", user.getUsername());
         model.addAttribute("borrowList", bookService.getBorrowList());
-        model.addAttribute("bookNumber", bookService.getBookList().size());
-        model.addAttribute("studentNumber", userService.getStudentList().size());
-        model.addAttribute("borrowNumber", bookService.getBorrowList().size());
+        model.addAttribute("bookNumber", bookService.getBookNumber());
+        model.addAttribute("studentNumber", userService.getStudentNumber());
+        model.addAttribute("borrowNumber", bookService.getBorrowNumber());
         return "index";
     }
 
@@ -35,7 +35,7 @@ public class BorrowController {
     public String addBorrow(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("nickname", user.getUsername());
-        model.addAttribute("bookList", bookService.getBookList());
+        model.addAttribute("bookMap", bookService.getBookMap());
         model.addAttribute("studentList", userService.getStudentList());
         return "add-borrow";
     }

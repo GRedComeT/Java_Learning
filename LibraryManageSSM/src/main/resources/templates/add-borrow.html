@@ -113,8 +113,8 @@
                                                     <div class="form-group">
                                                         <label for="region" class="col-form-label">Books</label>
                                                         <select class="select2 form-control" id="region" name="book">
-                                                            <option th:each="book : ${bookList}"
-                                                                    th:value="${book.getId()}" th:text="${book.getBook_info()}"></option>
+                                                            <option th:each="book : ${bookMap}" th:unless="${book.value}"
+                                                                    th:value="${book.key.getId()}" th:text="${book.key.getBook_info()}"></option>
                                                         </select>
                                                     </div>
                                                 </div>
