@@ -1,9 +1,11 @@
 package com.library.service;
 
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import com.library.entity.Student;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface UserService {
+import java.util.List;
 
-    public UserDetails loadUserByUsername(String username);
+public interface UserService extends UserDetailsService {
+    List<Student> getStudentList();
+    int getStudentNumber();
 }
